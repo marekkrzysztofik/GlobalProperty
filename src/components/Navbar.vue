@@ -2,7 +2,7 @@
     <nav class="navbar">
         <div class="colour-bar"></div>
         <div class="navbar-container">
-            <a href="#" class="logo">Global Property</a>
+            <img src="/images/logo.png" alt="logo" class="logo-image" />
             <div class="nav-links">
                 <a class="bold"><i class="pi pi-envelope"></i> globalproperty@global.pl </a>
                 <a class="bold"><i class="pi pi-phone"></i> +48 589 521 364 </a>
@@ -70,7 +70,7 @@ const toggleMobileMenu = () => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 64px;
+    height: 110px;
 }
 
 .logo {
@@ -79,7 +79,9 @@ const toggleMobileMenu = () => {
     color: #1e3a8a;
     text-decoration: none;
 }
-
+.logo-image {
+    width: 250px;
+}
 .nav-links {
     display: flex;
     gap: 24px;

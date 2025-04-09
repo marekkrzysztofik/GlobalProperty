@@ -21,7 +21,7 @@
     position: relative;
     width: 100%;
     max-width: 1200px;
-    height: 500px;
+    height: 450px;
     border-radius: 40px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
