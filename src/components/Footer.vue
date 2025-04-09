@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-column">
-                <img src="/images/logo.png" alt="logo" class="logo-image" />
+                <img src="/images/logo-white.png" alt="logo" class="logo-image" />
             </div>
             <div class="footer-column">
                 <h3>Dane kontaktowe</h3>
@@ -17,7 +17,6 @@
                 <p>NIP: 123-456-78-90</p>
             </div>
         </div>
-
         <div class="footer-bottom">
             <p>&copy; {{ new Date().getFullYear() }} Global Property. Wszelkie prawa zastrzeżone.</p>
         </div>
@@ -34,7 +33,7 @@
 }
 
 .footer {
-    height: 350px;
+    height: 250px;
     background-color: #1e3a8a;
     color: white;
     padding: 40px 16px 20px;
