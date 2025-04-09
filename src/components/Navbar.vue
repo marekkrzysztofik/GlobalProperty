@@ -1,5 +1,6 @@
 <template>
     <nav class="navbar">
+        <div class="colour-bar"></div>
         <div class="navbar-container">
             <a href="#" class="logo">Global Property</a>
             <div class="nav-links">
@@ -7,8 +8,6 @@
                 <a class="bold"><i class="pi pi-phone"></i> +48 589 521 364 </a>
 
             </div>
-          
-
             <!-- Desktop links -->
             <div class="nav-links">
                 <a href="#">Oferty</a>
@@ -30,7 +29,7 @@
         <!-- Mobile menu -->
         <div class="mobile-menu" :class="{ show: isOpen }">
             <a class="bold"><i class="pi pi-envelope"></i> globalproperty@global.pl </a>
-                <a class="bold"><i class="pi pi-phone"></i> +48 589 521 364 </a>
+            <a class="bold"><i class="pi pi-phone"></i> +48 589 521 364 </a>
             <a href="#">Oferty</a>
             <a href="#">O nas</a>
             <a href="#">Kontakt</a>
@@ -59,7 +58,7 @@ const toggleMobileMenu = () => {
     top: 0;
     width: 100%;
     background-color: white;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #1e3a8a;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     z-index: 1000;
 }
@@ -95,11 +94,15 @@ const toggleMobileMenu = () => {
 
 .nav-links a:hover {
     color: #1e3a8a;
+    text-decoration: underline;
+    text-underline-offset: 10px;
 }
+
 .nav-links .bold {
-  font-size: 1rem;
+    font-size: 1rem;
     font-weight: 600;
 }
+
 .login-button {
     padding: 8px 16px;
     background-color: #1e3a8a;
