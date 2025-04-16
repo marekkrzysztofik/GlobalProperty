@@ -3,19 +3,17 @@
     <div class="navbar-container">
       <div class="nav-left">
         <div class="nav-item" @click="openModal">
-          <a class="link"><i class="pi pi-envelope"></i> contact@globalproperty.pl</a>
+          <a class="link attention"><i class="pi pi-envelope"></i> contact@globalproperty.pl</a>
         </div>
         <div class="nav-item">
           <a><i class="pi pi-phone"></i> +48 589 521 364</a>
         </div>
       </div>
-
       <RouterLink to="/">
         <div class="logo-wrapper">
           <img src="/public/images/tarcza.png" alt="logo" class="logo-image" />
         </div>
       </RouterLink>
-
       <div class="nav-right">
         <div class="nav-links desktop">
           <div class="nav-item">
@@ -31,6 +29,12 @@
             <RouterLink to="/zespol">O nas</RouterLink>
           </div>
           <div class="nav-item"><a href="#">Kontakt</a></div>
+          <div class="nav-item">
+            <RouterLink to="/ulubione" class="favorites-link">
+              <i class="pi pi-heart"></i>
+              <span class="fav-label">Zapisane</span>
+            </RouterLink>
+          </div>
         </div>
 
         <div class="hamburger" :class="{ open: isOpen }" @click="toggleMobileMenu">
@@ -42,11 +46,11 @@
     </div>
 
     <Transition name="slide">
-      <div v-if="isOpen" class="mobile-menu">
-        <a href="#">Oferty</a>
-        <a href="#">Usługi</a>
-        <a href="#">Zespół</a>
-        <a href="#">O nas</a>
+      <div v-if="isOpen" class="mobile-menu" @click="toggleMobileMenu">
+        <RouterLink to="/oferty">Oferty</RouterLink>
+        <RouterLink to="/uslugi">Usługi</RouterLink>
+        <RouterLink to="/zespol">Zespół</RouterLink>
+        <RouterLink to="/zespol">O nas</RouterLink>
         <a href="#">Kontakt</a>
       </div>
     </Transition>
@@ -75,7 +79,6 @@ function closeModal() {
   formVisible.value = false
 }
 
-// Automatyczne zamykanie menu przy zmianie rozmiaru okna
 const handleResize = () => {
   if (window.innerWidth > 768) {
     isOpen.value = false
@@ -104,7 +107,7 @@ onBeforeUnmount(() => {
 }
 
 .navbar-container {
-  max-width: 1200px;
+  max-width: 90vw;
   height: 80px;
   margin: 0 auto;
   padding: 0 24px;
@@ -122,7 +125,7 @@ onBeforeUnmount(() => {
 }
 
 .logo-wrapper {
-  height: 90px;
+  height: 93px;
   position: absolute;
   top: 0;
   left: 50%;
@@ -136,7 +139,6 @@ onBeforeUnmount(() => {
 }
 
 .logo-image {
-  margin-top: 5px;
   width: 200px;
 }
 
@@ -236,7 +238,40 @@ onBeforeUnmount(() => {
   opacity: 1;
 }
 
+.attention i {
+  animation: glow 1.8s infinite;
+}
 
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #d4af37;
+  }
+
+  50% {
+    text-shadow: 0 0 15px #f5d76e;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #d4af37;
+  }
+}
+
+.favorites-link {
+  color: #d4af37;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+}
+
+.favorites-link:hover {
+  color: #f5d76e;
+}
+
+.fav-label {
+  display: inline;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -252,5 +287,8 @@ onBeforeUnmount(() => {
     display: flex;
   }
 
+  .fav-label {
+    display: none;
+  }
 }
 </style>

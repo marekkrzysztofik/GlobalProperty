@@ -53,6 +53,12 @@ const goToOffers = () => {
   justify-content: center;
   color: white;
   overflow: hidden;
-  transition: background-image 1s ease-in-out;
+  transition: background-image 1s ease-in-out; 
+}
+
+@media (max-width: 900px) {
+ .hero-section {
+  display: none;
+ }
 }
 </style>

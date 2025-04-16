@@ -140,6 +140,9 @@ function handleSearch() {
 }
 
 @media (max-width: 768px) {
+    .filters-section {
+        padding-top: 40px;
+    }
     .filters-container {
         flex-direction: column;
         align-items: stretch;

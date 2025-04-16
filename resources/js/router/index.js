@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import MainPage from '@/Pages/MainPage.vue'
 import Agents from '@/components/Agents.vue'
-import Offers from '@/components/Offers.vue'
+import OffersPage from '@/Pages/OffersPage.vue'
 
 const routes = [
     {
@@ -16,8 +16,8 @@ const routes = [
     },
     {
         path: "/oferty",
-        component: Offers,
-        name: "Offers",
+        component: OffersPage,
+        name: "OffersPage",
     },
 ];
 const router = createRouter({

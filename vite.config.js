@@ -11,6 +11,9 @@ export default defineConfig({
         }),
         vue(),
     ],
+    server: {
+        historyApiFallback: true
+      },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'resources/js'),

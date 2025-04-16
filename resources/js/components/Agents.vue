@@ -10,31 +10,22 @@
           wyspecjalizowaniu zawsze dysponują aktualną i szeroką wiedzą na temat określonych lokalizacji.
           To ponad 6 lat doświadczenia na trójmiejskim rynku nieruchomości.
           <br /><br />
-
           <em>Czujesz, że do nas pasujesz?</em>
         </p>
       </div>
-      <div class="flip-card" v-for="agent in agents" :key="agent.id">
-        <div class="flip-card-inner">
-          <!-- Front -->
-          <div class="flip-card-front">
-            <img :src="agent.photo" :alt="agent.name" class="agent-photo" />
-            <div class="agent-info">
-              <h3>{{ agent.name }}</h3>
-              <p class="agent-role">{{ agent.role }}</p>
-              <p class="agent-contact">
-                <i class="pi pi-envelope"></i> {{ agent.email }}
-              </p>
-              <p class="agent-contact">
-                <i class="pi pi-phone"></i> {{ agent.phone }}
-              </p>
-            </div>
-          </div>
-          <!-- Back -->
-          <div class="flip-card-back">
-            <h3>O {{ agent.name.split(' ')[0] }}</h3>
-            <p class="agent-description">{{ agent.description }}</p>
-          </div>
+
+      <div v-for="agent in agents" :key="agent.id" class="agent-card">
+        <img :src="agent.photo" :alt="agent.name" class="agent-photo" />
+        <div class="agent-content">
+          <h3 class="agent-name">{{ agent.name }}</h3>
+          <p class="agent-role">{{ agent.role }}</p>
+          <p class="agent-description">{{ agent.description }}</p>
+          <p class="agent-contact">
+            <i class="pi pi-envelope"></i> {{ agent.email }}
+          </p>
+          <p class="agent-contact">
+            <i class="pi pi-phone"></i> {{ agent.phone }}
+          </p>
         </div>
       </div>
     </div>
@@ -73,139 +64,99 @@ const agents = [
     description:
       'Obsługuje klientów premium, zapewniając kompleksową opiekę od pierwszego spotkania po finalizację umowy.',
   },
-  {
-    id: 3,
-    name: 'Julia Wiśniewska',
-    role: 'Agent terenowy — Trójmiasto',
-    email: 'julia@biuro.pl',
-    phone: '456 789 123',
-    photo: '/images/agent.jpg',
-    description:
-      'Obsługuje klientów premium, zapewniając kompleksową opiekę od pierwszego spotkania po finalizację umowy.',
-  },
 ]
 </script>
 
 <style scoped>
-.intro-card {
-  height: 550px;
-  background-color: #f9fafb;
-  padding: 24px 20px;
-  border-radius: 18px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-  text-align: left;
-  font-size: 0.97rem;
-  line-height: 1.7;
-  color: #374151;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-
 .agents-section {
-  max-width: 90vw;
-  margin: 80px auto;
-  padding: 0 16px;
+  
+  padding: 80px 16px;
+  color: #fff;
   text-align: center;
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 600;
-  margin-bottom: 40px;
-  color: #1e3a8a;
+  margin-bottom: 48px;
+  color: #d4af37;
 }
 
 .agents-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
   justify-items: center;
 }
 
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 550px;
-  perspective: 1000px;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.intro-card {
+  background-color: #132e4c;
+  padding: 24px 20px;
   border-radius: 18px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  backface-visibility: hidden;
-  background-color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  font-size: 0.97rem;
+  line-height: 1.7;
+  color: #e5e7eb;
+  text-align: left;
+}
+
+.agent-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
-.flip-card-front {
-  z-index: 2;
-}
-
-.flip-card-back {
-  transform: rotateY(180deg);
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
-  text-align: left;
+.agent-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
 }
 
 .agent-photo {
   width: 100%;
-  height: 70%;
+  height: 260px;
   object-fit: cover;
   object-position: top;
 }
 
-.agent-info {
-  padding: 16px 20px;
+.agent-content {
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
-.agent-info h3 {
+.agent-name {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #111827;
+  color: #0a2540;
 }
 
 .agent-role {
   color: #6b7280;
   font-size: 0.95rem;
-  margin-bottom: 8px;
-}
-
-.agent-contact {
-  font-size: 0.9rem;
-  color: #374151;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .agent-description {
   font-size: 0.95rem;
   color: #374151;
   line-height: 1.5;
+}
+
+.agent-contact {
+  font-size: 0.9rem;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.agent-contact i {
+  color: #d4af37;
 }
 </style>

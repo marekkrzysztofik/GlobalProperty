@@ -187,7 +187,7 @@ const offers = [
 .offers-scroll-container :deep(.offer-card) {
   flex: 0 0 calc((100% - 48px) / 3); /* 3 elementy + 2x24px */
   scroll-snap-align: start;
-  height: 450px;
+  height: 500px;
 }
 
 @media (max-width: 1024px) {
