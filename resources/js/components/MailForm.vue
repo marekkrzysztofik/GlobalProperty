@@ -67,7 +67,7 @@ async function submitForm() {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    
+
 }
 
 .contact-form input,

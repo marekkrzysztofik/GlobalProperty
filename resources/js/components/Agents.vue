@@ -19,7 +19,6 @@
         <div class="agent-content">
           <h3 class="agent-name">{{ agent.name }}</h3>
           <p class="agent-role">{{ agent.role }}</p>
-          <p class="agent-description">{{ agent.description }}</p>
           <p class="agent-contact">
             <i class="pi pi-envelope"></i> {{ agent.email }}
           </p>
@@ -64,13 +63,23 @@ const agents = [
     description:
       'Obsługuje klientów premium, zapewniając kompleksową opiekę od pierwszego spotkania po finalizację umowy.',
   },
+  {
+    id: 4,
+    name: 'Piotr Zieliński',
+    role: 'Specjalista ds. inwestycji',
+    email: 'piotr@biuro.pl',
+    phone: '111 222 333',
+    photo: '/images/agent.jpg',
+    description:
+      'Pomaga klientom inwestować w nieruchomości o wysokim potencjale zwrotu, zarówno w Trójmieście, jak i za granicą.',
+  },
 ]
 </script>
 
 <style scoped>
 .agents-section {
-  
   padding: 80px 16px;
+  background-color: #0a2540;
   color: #fff;
   text-align: center;
 }
@@ -84,9 +93,9 @@ const agents = [
 
 .agents-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 32px;
-  max-width: 1200px;
+  width: 90%;
   margin: 0 auto;
   justify-items: center;
 }
@@ -103,9 +112,14 @@ const agents = [
 }
 
 .agent-card {
-  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.07);
   border-radius: 18px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
@@ -114,43 +128,40 @@ const agents = [
 
 .agent-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
 }
 
 .agent-photo {
   width: 100%;
-  height: 260px;
+  height: 400px;
   object-fit: cover;
   object-position: top;
+  display: block;
 }
 
 .agent-content {
-  padding: 20px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+  text-align: left;
+  color: #f9fafb;
 }
 
 .agent-name {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #0a2540;
+  color: #facc15;
 }
 
 .agent-role {
-  color: #6b7280;
+  color: #e5e7eb;
   font-size: 0.95rem;
-}
-
-.agent-description {
-  font-size: 0.95rem;
-  color: #374151;
-  line-height: 1.5;
 }
 
 .agent-contact {
   font-size: 0.9rem;
-  color: #1f2937;
+  color: #f3f4f6;
   display: flex;
   align-items: center;
   gap: 0.5rem;

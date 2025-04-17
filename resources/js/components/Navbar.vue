@@ -2,56 +2,60 @@
   <nav class="navbar">
     <div class="navbar-container">
       <div class="nav-left">
+        <button class="lang-toggle" @click="toggleLang">
+          <Globe class="icon" />
+          {{ langState.lang.toUpperCase() }}
+        </button>
         <div class="nav-item" @click="openModal">
-          <a class="link attention"><i class="pi pi-envelope"></i> contact@globalproperty.pl</a>
+          <a class="link attention"><i class="pi pi-envelope"></i> {{ langState.t.navbar.email }}</a>
         </div>
         <div class="nav-item">
-          <a><i class="pi pi-phone"></i> +48 589 521 364</a>
+          <a><i class="pi pi-phone"></i> {{ langState.t.navbar.phone }}</a>
         </div>
       </div>
+
       <RouterLink to="/">
         <div class="logo-wrapper">
           <img src="/public/images/tarcza.png" alt="logo" class="logo-image" />
         </div>
       </RouterLink>
+
       <div class="nav-right">
         <div class="nav-links desktop">
           <div class="nav-item">
-            <RouterLink to="/oferty">Oferty</RouterLink>
+            <RouterLink to="/oferty">{{ langState.t.navbar.offers }}</RouterLink>
           </div>
           <div class="nav-item">
-            <RouterLink to="/uslugi">Usługi</RouterLink>
+            <RouterLink to="/uslugi">{{ langState.t.navbar.services }}</RouterLink>
           </div>
           <div class="nav-item">
-            <RouterLink to="/zespol">Zespół</RouterLink>
+            <RouterLink to="/zespol">{{ langState.t.navbar.team }}</RouterLink>
           </div>
           <div class="nav-item">
-            <RouterLink to="/zespol">O nas</RouterLink>
+            <RouterLink to="/zespol">{{ langState.t.navbar.about }}</RouterLink>
           </div>
-          <div class="nav-item"><a href="#">Kontakt</a></div>
+          <div class="nav-item"><a href="#">{{ langState.t.navbar.contact }}</a></div>
           <div class="nav-item">
             <RouterLink to="/ulubione" class="favorites-link">
               <i class="pi pi-heart"></i>
-              <span class="fav-label">Zapisane</span>
+              <span class="fav-label">{{ langState.t.navbar.saved }}</span>
             </RouterLink>
           </div>
         </div>
 
         <div class="hamburger" :class="{ open: isOpen }" @click="toggleMobileMenu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </div>
       </div>
     </div>
 
     <Transition name="slide">
       <div v-if="isOpen" class="mobile-menu" @click="toggleMobileMenu">
-        <RouterLink to="/oferty">Oferty</RouterLink>
-        <RouterLink to="/uslugi">Usługi</RouterLink>
-        <RouterLink to="/zespol">Zespół</RouterLink>
-        <RouterLink to="/zespol">O nas</RouterLink>
-        <a href="#">Kontakt</a>
+        <RouterLink to="/oferty">{{ langState.t.navbar.offers }}</RouterLink>
+        <RouterLink to="/uslugi">{{ langState.t.navbar.services }}</RouterLink>
+        <RouterLink to="/zespol">{{ langState.t.navbar.team }}</RouterLink>
+        <RouterLink to="/zespol">{{ langState.t.navbar.about }}</RouterLink>
+        <a href="#">{{ langState.t.navbar.contact }}</a>
       </div>
     </Transition>
   </nav>
@@ -59,15 +63,22 @@
   <Dialog v-model:visible="formVisible" modal :style="{ width: '600px' }">
     <MailForm @close-modal="closeModal" />
   </Dialog>
+
+  <!-- Przełącznik języka -->
+
 </template>
 
-<script setup>
-import { ref, onMounted, onBeforeUnmount, watchEffect } from 'vue'
-import MailForm from '@/components/MailForm.vue'
 
+<script setup>
+import { ref, onMounted, onBeforeUnmount, watchEffect, computed } from 'vue'
+import MailForm from '@/components/MailForm.vue'
+import langState from '@/lang/langState'
+import { Globe } from 'lucide-vue-next'
 const isOpen = ref(false)
 const formVisible = ref(false)
-
+function toggleLang() {
+  langState.lang = langState.lang === 'pl' ? 'en' : 'pl'
+}
 const toggleMobileMenu = () => {
   isOpen.value = !isOpen.value
 }
@@ -96,6 +107,32 @@ onBeforeUnmount(() => {
 
 
 <style scoped>
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background-color: transparent;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  color: #d4af37;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-toggle:hover {
+  background-color: #d4af37;
+  color: #0a2540;
+}
+
+.lang-toggle .icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
 .navbar {
   position: sticky;
   top: 0;

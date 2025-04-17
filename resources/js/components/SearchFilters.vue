@@ -2,24 +2,24 @@
     <section class="filters-section">
         <div class="filters-wrapper">
             <div class="filters-container">
-                <Multiselect v-model="filters.type" :options="['Mieszkanie', 'Dom', 'Działka', 'Lokal użytkowy']"
-                    placeholder="Typ nieruchomości" class="filter-select" />
+                <Multiselect v-model="filters.type" :options="langState.t.filters.types"
+                    :placeholder="langState.t.filters.typePlaceholder" class="filter-select" />
 
-                <Multiselect v-model="filters.transaction" :options="['Sprzedaż', 'Wynajem']"
-                    placeholder="Typ transakcji" class="filter-select" />
+                <Multiselect v-model="filters.transaction" :options="langState.t.filters.transactions"
+                    :placeholder="langState.t.filters.transactionPlaceholder" class="filter-select" />
 
-                <Multiselect v-model="filters.location" :options="['Warszawa', 'Kraków', 'Gdańsk', 'Gdynia']"
-                    placeholder="Lokalizacja" class="filter-select" />
+                <Multiselect v-model="filters.location" :options="langState.t.filters.locations"
+                    :placeholder="langState.t.filters.locationPlaceholder" class="filter-select" />
 
                 <div class="filter-price">
-                    <Multiselect v-model="filters.priceFrom" :options="['100 000 zł', '200 000 zł', '300 000 zł']"
-                        placeholder="Cena od" class="filter-select" />
-                    <Multiselect v-model="filters.priceTo" :options="['100 000 zł', '200 000 zł', '300 000 zł']"
-                        placeholder="Cena do" class="filter-select" />
+                    <Multiselect v-model="filters.priceFrom" :options="langState.t.filters.prices"
+                        :placeholder="langState.t.filters.priceFrom" class="filter-select" />
+                    <Multiselect v-model="filters.priceTo" :options="langState.t.filters.prices"
+                        :placeholder="langState.t.filters.priceTo" class="filter-select" />
                 </div>
 
                 <button class="search-button" @click="handleSearch">
-                    <i class="pi pi-search"></i> Szukaj
+                    <i class="pi pi-search"></i> {{ langState.t.filters.search }}
                 </button>
             </div>
         </div>
@@ -30,7 +30,12 @@
 import Multiselect from '@vueform/multiselect'
 import '@vueform/multiselect/themes/default.css'
 import { reactive } from 'vue'
+import langState from '@/lang/langState'
 
+
+function toggleLang() {
+    langState.lang = langState.lang === 'pl' ? 'en' : 'pl'
+}
 const filters = reactive({
     type: '',
     transaction: '',
@@ -143,6 +148,7 @@ function handleSearch() {
     .filters-section {
         padding-top: 40px;
     }
+
     .filters-container {
         flex-direction: column;
         align-items: stretch;
